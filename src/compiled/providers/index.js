@@ -98,7 +98,5 @@ function resolveProvider(name) {
     if (fromRegistry)
         return fromRegistry;
     const baseUrl = _sub("${SMALLCODE_BASE_URL}") || "http://localhost:1234/v1";
-    const provider = new openai_compat_1.OpenAICompatProvider(baseUrl);
-    registry_1.providerRegistry.register(name, provider);
-    return provider;
+    return new openai_compat_1.OpenAICompatProvider(baseUrl);
 }

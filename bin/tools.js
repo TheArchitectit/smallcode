@@ -37,6 +37,12 @@ const COMPOUND_TOOLS = [
   { type: 'function', function: { name: 'run', description: 'Run an existing file (python, node, etc). Use this instead of create_and_run when the file already exists.', parameters: { type: 'object', properties: { command: { type: 'string', description: 'Command to run e.g. "python game.py" or "node server.js"' }, timeout: { type: 'integer', description: 'Timeout in seconds. Default: 30' } }, required: ['command'] } } },
 ];
 
+// ─── Provider Tools ──────────────────────────────────────────────────────────
+
+const PROVIDER_TOOLS = [
+  { type: 'function', function: { name: 'configure_provider', description: 'Configure a new AI provider (LM Studio, OpenRouter, Anthropic, OpenAI, DeepSeek, Ollama, or custom endpoint). Saves config to ~/.smallcode/.env and sets it as active.', parameters: { type: 'object', properties: { provider: { type: 'string', description: 'Provider name: lmstudio, openrouter, anthropic, openai, deepseek, ollama, or custom' } }, required: ['provider'] } } },
+];
+
 // ─── Tool Routing ────────────────────────────────────────────────────────────
 
 /**

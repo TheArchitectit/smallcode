@@ -37,8 +37,8 @@ class AnthropicAdapter {
             ...msg.tool_calls.map(tc => ({
               type: 'tool_use',
               id: tc.id,
-              name: tc.name,
-              input: JSON.parse(tc.arguments || '{}'),
+              name: tc.function.name,
+              input: JSON.parse(tc.function.arguments || '{}'),
             })),
           ];
         }
@@ -124,8 +124,11 @@ class AnthropicAdapter {
       } else if (block.type === 'tool_use') {
         toolCalls.push({
           id: block.id,
-          name: block.name,
-          arguments: JSON.stringify(block.input),
+          type: 'function',
+          function: {
+            name: block.name,
+            arguments: JSON.stringify(block.input),
+          },
         });
       }
     }
