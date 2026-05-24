@@ -380,7 +380,7 @@ class PluginLoader {
           if (result !== undefined) results.push(result);
         }
       } catch (e) {
-        console.error(`[plugin:${plugin}] hook ${event} failed: ${e.message}`);
+        console.error(`[plugin:${hook.plugin}] hook ${event} failed: ${e.message}`);
       }
     }
     return results;
